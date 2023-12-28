@@ -36,7 +36,7 @@ def draw(event, x, y, flags, param):
 def main(img_path, output_path):
     global img, mask, mode
     img = cv.imread(img_path)
-    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    gray = img[:, :, 0] * 0.11 + img[:, :, 1] * 0.59 + img[:, :, 2] * 0.3
     mask = np.zeros(img.shape, np.uint8)
     cv.namedWindow('image')
     cv.setMouseCallback('image', draw)
